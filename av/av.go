@@ -3,6 +3,7 @@ package av
 import (
 	"fmt"
 	"io"
+	"net"
 )
 
 const (
@@ -153,3 +154,5 @@ type WriteCloser interface {
 	CalcTime
 	Write(*Packet) error
 }
+
+type ServeBullet func(bulletListener net.Listener)

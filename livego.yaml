@@ -18,8 +18,9 @@
 # # API Options
 # api_addr: ":8090"
 server:
-- appname: live
-  live: true
-  hls: true
-  api: true
-  flv: true
+  - appname: live
+    live: true
+    hls: true
+    api: true
+    flv: true
+    bullet: true

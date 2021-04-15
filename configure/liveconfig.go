@@ -31,6 +31,7 @@ type Application struct {
 	Flv        bool     `mapstructure:"flv"`
 	Api        bool     `mapstructure:"api"`
 	StaticPush []string `mapstructure:"static_push"`
+	Bullet     bool     `mapstructure:"bullet"`
 }
 
 type Applications []Application
@@ -48,6 +49,7 @@ type ServerCfg struct {
 	RTMPAddr        string       `mapstructure:"rtmp_addr"`
 	HTTPFLVAddr     string       `mapstructure:"httpflv_addr"`
 	HLSAddr         string       `mapstructure:"hls_addr"`
+	BulletAddr      string       `mapstructure:"bullet_addr"`
 	HLSKeepAfterEnd bool         `mapstructure:"hls_keep_after_end"`
 	APIAddr         string       `mapstructure:"api_addr"`
 	RedisAddr       string       `mapstructure:"redis_addr"`
@@ -62,11 +64,12 @@ type ServerCfg struct {
 // default config
 var defaultConf = ServerCfg{
 	ConfigFile:      "livego.yaml",
-	FLVArchive:	false,
-	RTMPNoAuth:	false,
+	FLVArchive:      false,
+	RTMPNoAuth:      false,
 	RTMPAddr:        ":1935",
 	HTTPFLVAddr:     ":7001",
 	HLSAddr:         ":7002",
+	BulletAddr:      ":9999",
 	HLSKeepAfterEnd: false,
 	APIAddr:         ":8090",
 	WriteTimeout:    10,
@@ -106,6 +109,7 @@ func init() {
 	pflag.String("httpflv_addr", ":7001", "HTTP-FLV server listen address")
 	pflag.String("hls_addr", ":7002", "HLS server listen address")
 	pflag.String("api_addr", ":8090", "HTTP manage interface server listen address")
+	pflag.String("bullet_addr", ":9999", "Bullet server listen address")
 	pflag.String("config_file", "livego.yaml", "configure filename")
 	pflag.String("level", "info", "Log level")
 	pflag.Bool("hls_keep_after_end", false, "Maintains the HLS after the stream ends")
